@@ -1,0 +1,117 @@
+<div class="container">
+
+    <form  class="well form-horizontal" style="color:coral;" action=" " method="post" id="contact_form">
+      <fieldset>
+        <button type="button" class="btn btn-success" (click)="logoutUser()">Logout</button>
+        <!-- Form Name -->
+        <legend>
+          <h2><b>User Details</b></h2>
+        </legend><br>
+  
+        <!-- Text input-->
+  
+        <img class="card-img-top" [src]="userProfile.user.profileURL" alt="Card image">
+        <div class="form-group">
+          <label class="col-md-4 control-label">First Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input name="first_name" readonly value={{userProfile.user.firstName}} placeholder="First Name" class="form-control" 
+              #firstName type="text">
+            </div>
+          </div>
+        </div>
+  
+        <!-- Text input-->
+  
+        <div class="form-group">
+          <label class="col-md-4 control-label">Last Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input name="last_name"  readonly placeholder="Last Name" value={{userProfile.user.lastName}} class="form-control"
+              #lastName type="text">
+            </div>
+          </div>
+        </div>
+        <!-- Text input-->
+  
+        <div class="form-group">
+          <label class="col-md-4 control-label">Username</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input name="user_name"  readonly value={{userProfile.user.userName}}  placeholder="Username" class="form-control" 
+              #userName type="text">
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="form-group">
+          <label class="col-md-4 control-label">Age</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input name="age"  readonly placeholder="Age" value={{userProfile.user.age}} class="form-control"
+              #age type="number">
+            </div>
+          </div>
+        </div>
+  
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">E-Mail</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input name="email"  readonly  placeholder="E-Mail Address" class="form-control"  value={{userProfile.user.email}}
+              #email type="text">
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label class="col-md-4 control-label">City</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input name="city"  readonly  placeholder="City" class="form-control" value={{userProfile.user.city}}
+              #city type="text">
+            </div>
+          </div>
+        </div>
+  
+  
+        <!-- Text input-->
+  
+        <div class="form-group">
+          <label class="col-md-4 control-label">Contact No.</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+              <input name="contact_no"  readonly  placeholder="(+91)" class="form-control" value={{userProfile.user.mobile}} 
+              #mobile type="text">
+            </div>
+          </div>
+        </div>
+  
+
+        <!-- Button -->
+        <div class="col-md-12 form-group">
+          <!-- <label class="col-md-4 control-label"></label> -->
+          <div class="col-md-2">
+            <button type="button" class="btn btn-warning" (click)="onSelect(userProfile.user)">Edit Profile <span class="glyphicon glyphicon-send"></span></button>
+          </div>
+          <div class="col-md-3"></div>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-primary" (click)="onUpdatePassword()">Update Password <span class="glyphicon glyphicon-send"></span></button>
+          </div>
+        </div>
+  
+      </fieldset>
+    </form>
+  </div>
+  
+  <!-- </div> -->
+  
