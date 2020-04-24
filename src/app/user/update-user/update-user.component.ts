@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { NotificationService } from '../../notification.service';
 import { ResponseObject } from 'src/app/definitions';
+import { BsDatepickerDirective } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-update-user',
@@ -27,7 +28,8 @@ export class UpdateUserComponent implements OnInit {
   @ViewChild('city') cityInputRef: ElementRef;
   @ViewChild('age') ageInputRef: ElementRef;
   @ViewChild('userName') userNameInputRef: ElementRef;
-
+  @ViewChild('dateOfBirth') dateOfBirthInputRef: ElementRef;
+  @ViewChild(BsDatepickerDirective, { static: false }) datepicker: BsDatepickerDirective;
   // tslint:disable-next-line:max-line-length
   constructor(private notifyService: NotificationService, private httpService: HttpService, private router: Router, private storage: StorageService) {
   }
@@ -44,6 +46,11 @@ export class UpdateUserComponent implements OnInit {
     });
   }
 
+  @HostListener('window:scroll')
+  onScrollEvent() {
+    this.datepicker.hide();
+  }
+
   updateDetails(){
     this.reqBody = { user: {
       firstName: this.firstNameInputRef.nativeElement.value,
@@ -52,7 +59,8 @@ export class UpdateUserComponent implements OnInit {
       email: this.emailInputRef.nativeElement.value,
       city: this.cityInputRef.nativeElement.value,
       age: this.ageInputRef.nativeElement.value,
-      userName: this.userNameInputRef.nativeElement.value
+      userName: this.userNameInputRef.nativeElement.value,
+      dateOfBirth: this.dateOfBirthInputRef.nativeElement.value
       }
     };
     this.httpService.updateProfile(this.reqBody).subscribe((res: ResponseObject) => {

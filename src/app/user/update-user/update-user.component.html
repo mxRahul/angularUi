@@ -10,7 +10,7 @@
 
       <!-- Text input-->
       <div class="form-group">
-        <img class="card-img-top" [src]="userProfile.profileURL" alt="Card image">
+        <img class="card-img-top" [src]="userProfile.user.profileURL" alt="Card image">
         <div class="upload-btn-wrapper" >
             <input type="file" name="avatar" (change)="onFileChange($event)" />
         </div>
@@ -48,6 +48,25 @@
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
             <input name="user_name" placeholder="Username" value="{{userProfile.user.userName}}" 
             class="form-control" type="text" #userName>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Date of birth</label>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-12 col-md-4 form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input
+                type="text"
+                placeholder="Datepicker"
+                class="form-control"
+                bsDatepicker value="{{userProfile.user.dateOfBirth}}" 
+                [bsConfig]="{ isAnimated: true }" #dateOfBirth>
+              </div>
+            </div>
           </div>
         </div>
       </div>
